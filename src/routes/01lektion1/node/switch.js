@@ -16,5 +16,7 @@ switch (alternative) {
 		break;
 	default:
 		// console.log("error");
+
+		// ! detta skulle döda serverprocessen, bättre att skicka response med fel t.ex
 		throw new Error("illegal input");
 }
