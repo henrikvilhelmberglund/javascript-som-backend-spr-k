@@ -1,6 +1,6 @@
 {
-	"name": "sveltekit-unocss-template",
-	"version": "0.0.7",
+	"name": "javascript-som-backend-spr-k",
+	"version": "0.0.0",
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
