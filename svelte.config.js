@@ -1,7 +1,8 @@
 // use adapter-auto for zero config deployment to Vercel, adapter-static for Github Pages
 // import adapter from '@sveltejs/adapter-auto';
 import preprocess from "svelte-preprocess";
-import adapter from "@sveltejs/adapter-static";
+// import adapter from "@sveltejs/adapter-static";
+import adapter from "@sveltejs/adapter-node";
 
 const dev = process.argv.includes("dev");
 
@@ -11,7 +12,7 @@ const config = {
 		adapter: adapter(),
 		paths: {
 			// change path below to your github repo if using Github Pages
-			base: dev ? "" : "/sveltekit-unocss-template",
+			base: dev ? "" : "",
 		},
 	},
 	vitePlugin: {
