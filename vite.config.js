@@ -244,7 +244,6 @@ export default defineConfig({
 					},
 				}),
 				presetHeroPatterns(),
-				presetUno(),
 				presetWebFonts({
 					provider: "google", // default provider
 					fonts: {
