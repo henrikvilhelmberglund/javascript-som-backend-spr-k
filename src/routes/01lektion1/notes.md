@@ -17,3 +17,4 @@ globalt objekt som heter process
 process.argv
 readline - skapa objekt, sen question()
 prompt - promisebaserat läsa/skriva till terminalen
+import whatever from "prompt" (kan döpa om namnet som sen används, men vettigare att ha samma)
