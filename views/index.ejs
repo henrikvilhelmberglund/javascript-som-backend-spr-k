@@ -1,15 +1,11 @@
-<html>
-	<head>
-		<title><%= title %></title>
-	</head>
-	<body>
-		<h1><%= title %></h1>
-		<p><%= message %></p>
-		<ul>
-			<% users.forEach((user) => { %>
+<%- include("header") %>
+<h1><%= title %></h1>
+<p><%= message %></p>
+<ul>
+	<% users.forEach((user) => { %>
 
-			<li><%= user.id %> : <% user.name %></li>
-			<% }) %>
-		</ul>
-	</body>
-</html>
+	<li><%= user.id %> : <%= `${user.name} (${user.email})` %></li>
+	<% }) %>
+</ul>
+
+<%- include("footer") %>
