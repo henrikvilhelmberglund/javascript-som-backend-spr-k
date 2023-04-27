@@ -1,7 +1,8 @@
 function greetUser() {
 	const urlParams = new URLSearchParams(window.location.search);
-	const username = urlParams.get("username");
-	const password = urlParams.get("password");
+	const { username, password } = Object.fromEntries(urlParams.entries());
+	// const username = urlParams.get("username");
+	// const password = urlParams.get("password");
 
 	if (!username && !password) {
 		return false;
