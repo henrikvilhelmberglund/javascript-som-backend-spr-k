@@ -1,6 +1,6 @@
 <script>
 	// export let data;
-	import { getData } from "$lib/api";
+	import { getData, postData } from "$lib/api";
 	import { onMount } from "svelte";
 	let myPromise;
 	// onMount(() => {
@@ -27,7 +27,14 @@
 		{/await}
 	</div>
 	<!-- ? how to send to API and get back response without leaving the page? -->
-	<form action="http://127.0.0.1:3000/svelteuser" method="post">
+	<form
+		form
+		on:submit|preventDefault={async () => {
+			let result = await postData("/svelteuser");
+			console.log(result);
+		}}
+		action="http://127.0.0.1:3000/svelteuser"
+		method="post">
 		<input type="text" name="username" id="username" />
 		<input type="password" name="password" id="password" />
 
