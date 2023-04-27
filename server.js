@@ -1,4 +1,4 @@
-import { handler } from "./build/handler.js";
+// import { handler } from "./build/handler.js";
 import express from "express";
 import cors from "cors";
 
@@ -9,6 +9,7 @@ app.use(express.static("public"));
 app.use(express.urlencoded());
 app.use(cors());
 
+// ! this will not work when there is an index.html in the public folder
 app.get("/", (req, res) => {
 	// res.send("Starting page");
 	res.json({ message: "Starting page" });
@@ -31,6 +32,6 @@ app.post("/user", (req, res) => {
 	res.redirect(`/form.html?username=${username}&password=${password}`);
 });
 
-app.use(handler);
+// app.use(handler);
 
 app.listen(port, () => console.log(`Started server on port ${port}`));
