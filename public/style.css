@@ -2,3 +2,22 @@
 	color: violet;
 	font-size: 4rem;
 }
+
+h1 {
+	color: slateblue;
+	animation: filter-animation 8s infinite;
+}
+
+@keyframes filter-animation {
+	0% {
+		filter: hue-rotate(0deg);
+	}
+
+	50% {
+		filter: hue-rotate(180deg);
+	}
+
+	100% {
+		filter: hue-rotate(360deg);
+	}
+}
