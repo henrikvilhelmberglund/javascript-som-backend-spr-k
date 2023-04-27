@@ -49,7 +49,9 @@ app.get("/:input", (req, res) => {
 		},
 		(err, html) => {
 			if (err) {
-				res.status(404).send("Page not found");
+				res.status(404).render("404", {
+					title: `404: page not found`,
+				});
 			}
 			res.send(html);
 		}
