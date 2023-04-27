@@ -28,15 +28,14 @@
 	</div>
 	<!-- ? how to send to API and get back response without leaving the page? -->
 	<form
-		form
 		on:submit|preventDefault={async () => {
 			let result = await postData("/svelteuser");
 			console.log(result);
 		}}
 		action="http://127.0.0.1:3000/svelteuser"
 		method="post">
-		<input type="text" name="username" id="username" />
-		<input type="password" name="password" id="password" />
+		<input class="border border-solid border-black" type="text" name="username" id="username" />
+		<input class="border border-solid border-black" type="password" name="password" id="password" />
 
 		<button>Login</button>
 	</form>
