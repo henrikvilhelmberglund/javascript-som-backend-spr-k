@@ -1,12 +1,13 @@
+import { handler } from "./build/handler.js";
 import express from "express";
-// import cors from "cors";
+import cors from "cors";
 
 const app = express();
 const port = 3000;
 
 app.use(express.static("public"));
 app.use(express.urlencoded());
-// app.use(cors());
+app.use(cors());
 
 app.get("/", (req, res) => {
 	// res.send("Starting page");
@@ -29,5 +30,7 @@ app.post("/user", (req, res) => {
 	const { username, password } = req.body;
 	res.redirect(`/form.html?username=${username}&password=${password}`);
 });
+
+app.use(handler);
 
 app.listen(port, () => console.log(`Started server on port ${port}`));

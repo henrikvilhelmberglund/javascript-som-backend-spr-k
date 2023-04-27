@@ -12,6 +12,10 @@ function greetUser() {
 	h1.innerHTML = `Welcome ${username}! Your password is ${password}! Keep it safe!`;
 
 	document.body.append(h1);
+
+	const img = document.createElement("img");
+	img.src = "http://127.0.0.1:3002/mergeconflict.gif";
+	document.body.append(img);
 }
 
 greetUser();

@@ -1,7 +1,11 @@
 <script>
+	// export let data;
 	import { getData } from "$lib/api";
-
-	const myPromise = getData("json");
+	import { onMount } from "svelte";
+	let myPromise;
+	onMount(() => {
+		myPromise = getData();
+	});
 </script>
 
 <main class="m-4">
@@ -10,7 +14,7 @@
 	{#await myPromise}
 		Loading...
 	{:then value}
-		{value}
+		{JSON.stringify(value)}
 	{:catch error}
 		{error}
 	{/await}
