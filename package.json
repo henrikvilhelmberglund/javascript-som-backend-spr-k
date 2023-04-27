@@ -13,7 +13,8 @@
 		"release": "commit-and-tag-version",
 		"postrelease": "git push --follow-tags origin main",
 		"deploy": "npx gh-pages -d build --dotfiles",
-    "server": "npx nodemon ./server"
+		"server": "npx nodemon ./server",
+		"template": "npx nodemon ./template"
 	},
 	"devDependencies": {
 		"@iconify-json/noto": "^1.1.11",
@@ -29,6 +30,7 @@
 		"@unocss/transformer-directives": "^0.50.6",
 		"commit-and-tag-version": "^11.0.0",
 		"cors": "^2.8.5",
+		"ejs": "^3.1.9",
 		"express": "^4.18.2",
 		"mongodb": "^5.3.0",
 		"nodemon": "^2.0.22",
