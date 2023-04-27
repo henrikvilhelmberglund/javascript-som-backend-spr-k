@@ -32,6 +32,13 @@ app.post("/user", (req, res) => {
 	res.redirect(`/form.html?username=${username}&password=${password}`);
 });
 
+app.post("/svelteuser", (req, res) => {
+	// res.send("Hello world");
+	// res.json(req.body);
+	const { username, password } = req.body;
+	res.json({ username, password });
+});
+
 // app.use(handler);
 
 app.listen(port, () => console.log(`Started server on port ${port}`));
