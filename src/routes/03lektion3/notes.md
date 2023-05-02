@@ -110,3 +110,17 @@ var försiktig för den tar bort utan att fråga
 om vi vill filtrera på perDay inuti activities:
 
 db.animals.find({"activities.perDay": {$gt: 2}})
+
+## byta namn på databas
+
+--dump out all the object
+
+mongodump -d oldDBname path
+
+--restore the dumped out objects
+
+mongorestore -d NewDBname path/oldDBname.bson
+
+--drop the old database
+
+Drop the Old DB with db.dropDatabase();
