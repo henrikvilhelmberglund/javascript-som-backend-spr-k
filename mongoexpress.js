@@ -5,6 +5,9 @@ const port = 3000;
 const app = express();
 app.set("views", "./views");
 app.set("view engine", "ejs");
+// middleware för formulär
+app.use(express.urlencoded());
+
 // Skriv all annan kod här sen
 app.listen(port, () => console.log(`Listening on ${port}`));
 
@@ -20,6 +23,18 @@ app.get("/books", async (req, res) => {
 	const books = await booksCollection.find({}).toArray();
 	// res.json(books);
 	res.render("books", { books });
+});
+
+app.get("/books/create", async (req, res) => {
+	const books = await booksCollection.find({}).toArray();
+	// res.json(books);
+	res.render("create", { books });
+});
+
+app.post("/books/create", async (req, res) => {
+	await booksCollection.insertOne(req.body);
+	// res.json(books);
+	res.redirect("/books");
 });
 
 app.get("/book/:id", async (req, res) => {
