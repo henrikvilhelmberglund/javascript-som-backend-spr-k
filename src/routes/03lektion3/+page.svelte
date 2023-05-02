@@ -1,11 +1,7 @@
 <script>
-  
 </script>
 
-<main class="">
-  
-</main>
+<main class="">Hi</main>
 
 <style>
-  
 </style>

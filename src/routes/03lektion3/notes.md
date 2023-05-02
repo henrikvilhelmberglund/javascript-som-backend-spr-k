@@ -124,3 +124,26 @@ mongorestore -d NewDBname path/oldDBname.bson
 --drop the old database
 
 Drop the Old DB with db.dropDatabase();
+
+# MongoDB i Node
+
+dynamisk data i Node
+
+behöver något ramverk, Mongoose är det populäraste (använder scheman)
+
+vi kommer använda officiella MongoDB-drivern: mongodb
+
+npm install mongodb
+
+import { MongoClient } from "mongodb"
+
+skapar instans genom att ge address till MongoDB som argument
+
+sedan connecta med await connect()
+
+väljer databas med db()
+
+i databas väljer man collection med collection()
+
+sedan findOne, findMany, insertOne, insertMany etc
+
