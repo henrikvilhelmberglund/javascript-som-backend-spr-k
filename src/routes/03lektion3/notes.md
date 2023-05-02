@@ -90,9 +90,23 @@ två argument: matchningsobjekt, objekt där man kan använda $set och $unset f�
 
 kan matcha på null `(name: null)` med updateMany() för att lägga till överallt där det fattas
 
+för att lägga till i en existerande array använd $push
+
+```
+db.students.updateOne(
+   { _id: 1 },
+   { $push: { scores: 89 } }
+)
+```
+
 ## ta bort dokument
 
 deleteOne() deleteMany()
 
 var försiktig för den tar bort utan att fråga
 
+## hitta i objekt
+
+om vi vill filtrera på perDay inuti activities:
+
+db.animals.find({"activities.perDay": {$gt: 2}})
