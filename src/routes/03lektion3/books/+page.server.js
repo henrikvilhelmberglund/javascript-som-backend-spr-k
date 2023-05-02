@@ -5,6 +5,16 @@ await client.connect();
 const db = client.db("library");
 const booksCollection = db.collection("books");
 
+/** @type {import('./$types').Actions} */
+export const actions = {
+	default: async ({ request }) => {
+    const data = await request.formData();
+    console.log(data)
+		// await booksCollection.insertOne(data);
+		// res.json(books);
+	},
+};
+
 /** @type {import('./$types').PageLoad} */
 export async function load() {
 	const books = await booksCollection.find({}).toArray();
