@@ -242,12 +242,12 @@
     "method": "POST",
     "sortNum": 10000,
     "created": "2023-05-09T11:35:30.414Z",
-    "modified": "2023-05-09T12:23:34.963Z",
+    "modified": "2023-05-09T12:38:08.996Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"title\": \"Third blog post\",\n  \"content\": \"This content is great!\",\n  \"date\": \"2002-01-02T00:00:00.000Z\",\n  \"tags\": [\n    \"third-post\",\n    \"whatever\"\n  ]\n}",
+      "raw": "{\r\n  \"title\": \"Why Everyone Should Learn to Code\",\r\n  \"content\": \"In today's digital age, coding is becoming an increasingly important skill to have. Whether you're looking to pursue a career in technology, start your own business, or simply understand the world around you, coding can give you a powerful advantage. Learning to code can help you develop problem-solving skills, improve your logical reasoning, and enhance your creativity. Plus, with so many online resources and coding bootcamps available, it's never been easier to get started.\",\r\n  \"date\": \"2022-03-10T00:00:00.000Z\",\r\n  \"tags\": [\"coding\", \"technology\", \"education\"]\r\n}\r\n",
       "form": []
     },
     "tests": []
@@ -334,6 +334,146 @@
       {
         "name": "limit",
         "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "eb119b75-2cf3-40f6-95e3-13317d13ba6b",
+    "colId": "9135c07e-8cee-4bfb-acc4-052e687d83ab",
+    "containerId": "",
+    "name": "Get latest posts",
+    "url": "localhost:3000/api/posts?latest=true",
+    "method": "GET",
+    "sortNum": 60000,
+    "created": "2023-05-09T12:34:07.643Z",
+    "modified": "2023-05-09T12:40:50.149Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "latest",
+        "value": "true",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "92143531-667b-4ca5-8456-22239e745c8e",
+    "colId": "78f8181a-4138-4c41-9256-c3241edb6a92",
+    "containerId": "",
+    "name": "Add post",
+    "url": "localhost:5173/api/posts",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2023-05-09T12:55:54.180Z",
+    "modified": "2023-05-09T13:03:46.880Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"title\": \"Why Everyone Should Learn to Code\",\n  \"content\": \"In today's digital age, coding is becoming an increasingly important skill to have. Whether you're looking to pursue a career in technology, start your own business, or simply understand the world around you, coding can give you a powerful advantage. Learning to code can help you develop problem-solving skills, improve your logical reasoning, and enhance your creativity. Plus, with so many online resources and coding bootcamps available, it's never been easier to get started.\",\n  \"date\": \"2022-03-10T00:00:00.000Z\",\n  \"tags\": [\"coding\", \"technology\", \"education\"]\n}\n",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "da04830d-4ea7-4414-93c5-21e328d555b9",
+    "colId": "78f8181a-4138-4c41-9256-c3241edb6a92",
+    "containerId": "",
+    "name": "Get all posts",
+    "url": "localhost:5173/api/posts",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2023-05-09T12:55:54.181Z",
+    "modified": "2023-05-09T12:59:36.738Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "20119edb-04f6-491a-9484-3e90747a784a",
+    "colId": "78f8181a-4138-4c41-9256-c3241edb6a92",
+    "containerId": "",
+    "name": "Get some posts",
+    "url": "localhost:5173/api/posts?limit=1",
+    "method": "GET",
+    "sortNum": 25000,
+    "created": "2023-05-09T12:55:54.182Z",
+    "modified": "2023-05-09T13:09:36.318Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "be45f1d2-26bb-46a9-abb8-ea7979ac3f3f",
+    "colId": "78f8181a-4138-4c41-9256-c3241edb6a92",
+    "containerId": "",
+    "name": "Get single post",
+    "url": "localhost:5173/api/posts/1",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2023-05-09T12:55:54.183Z",
+    "modified": "2023-05-09T13:23:37.055Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "a7bf687d-287d-472b-8765-4e6ae834a437",
+    "colId": "78f8181a-4138-4c41-9256-c3241edb6a92",
+    "containerId": "",
+    "name": "Update post",
+    "url": "localhost:5173/api/posts/1",
+    "method": "PUT",
+    "sortNum": 40000,
+    "created": "2023-05-09T12:55:54.184Z",
+    "modified": "2023-05-09T13:25:30.049Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"title\": \"The Awesome Power of Beautiful Thinking\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "d00c49ce-f041-430e-ad7c-6653d57c1cf3",
+    "colId": "78f8181a-4138-4c41-9256-c3241edb6a92",
+    "containerId": "",
+    "name": "Delete post",
+    "url": "localhost:5173/api/posts/1",
+    "method": "DELETE",
+    "sortNum": 50000,
+    "created": "2023-05-09T12:55:54.185Z",
+    "modified": "2023-05-09T13:24:42.233Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "8b444df4-f6ef-4454-8344-ee15ac64533b",
+    "colId": "78f8181a-4138-4c41-9256-c3241edb6a92",
+    "containerId": "",
+    "name": "Get latest posts",
+    "url": "localhost:5173/api/posts?latest=true",
+    "method": "GET",
+    "sortNum": 60000,
+    "created": "2023-05-09T12:55:54.186Z",
+    "modified": "2023-05-09T13:27:48.092Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "latest",
+        "value": "true",
         "isPath": false
       }
     ],
