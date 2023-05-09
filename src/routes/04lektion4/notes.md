@@ -83,3 +83,30 @@ Skicka requests - t.ex GET till URL, kan skräddarsy, sedan spara requests till 
 Requestbody: Postman stödjer många typer av bodies, vi kan ställa in att vi skickar JSON
 
 Respons: får response, t.ex 500, 404, oftast 200 med datan man vill ha
+
+## REST med Express
+
+hittills template med HTML, men vanligare idag att bygga SPA som renderar ut HTML, och att ha backend som svarar med JSON-data (med hjälp av REST)
+
+Create = app.post() etc för resten
+
+i webb bara GET/POST
+
+med JS går det bra, med JS eller Axios kan man bara skriva metod
+
+standard för REST är att varje resurs har varsin route och att verbet avgör vad som händer
+
+app.get("products"), sen .post, .get (id), .put (id), .delete (id)
+
+querystring för att justera läsningen av data
+
+app.use(express.json());-middleware i Express
+
+man vill undvika verb i sina URLer för metoden ska bestämma vad som händer 
+
+håll till små bokstäver för alla URLer
+
+vanligt att börja med t.ex /api/v1/entries
+
+namngivning: om man har "authors" och sen "followers", hur lägger man till? arkitekturella frågor kan man lägga mycket tid på i utvecklingsteam
+
