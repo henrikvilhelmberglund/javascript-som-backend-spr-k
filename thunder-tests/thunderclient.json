@@ -1,0 +1,16 @@
+[
+  {
+    "_id": "7d55a65f-ae15-426d-be9c-294a1f03000b",
+    "colId": "40f1f922-4e69-44ad-a902-e82d1be62c1e",
+    "containerId": "",
+    "name": "Get all",
+    "url": "{{baseServer}}/products",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2023-05-09T07:39:56.070Z",
+    "modified": "2023-05-09T07:40:05.118Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  }
+]
