@@ -14,6 +14,7 @@
 		"postrelease": "git push --follow-tags origin main",
 		"deploy": "npx gh-pages -d build --dotfiles",
 		"server": "npx nodemon ./server",
+		"restapi": "npx nodemon ./rest-api",
 		"template": "npx nodemon ./template"
 	},
 	"devDependencies": {
