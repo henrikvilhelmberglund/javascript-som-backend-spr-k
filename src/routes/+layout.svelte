@@ -2,7 +2,7 @@
 	import Nav from "$lib/Nav.svelte";
 	import "@unocss/reset/antfu.css";
 
-	let routes = ["/01lektion1", "/02lektion2", "/03lektion3"];
+	let routes = ["/01lektion1", "/02lektion2", "/03lektion3", "/04lektion4"];
 </script>
 
 <Nav {routes} level={1} />
