@@ -48,7 +48,15 @@ app.delete("/api/posts/:id", async (req, res) => {
 app.get("/api/posts", async (req, res) => {
 	let result;
 	// if (req.query.limit) {
-	result = await postsCollection.find({}).limit(parseInt(req.query.limit, 10)).toArray();
+	if (req.query.latest) {
+		result = await postsCollection
+			.find({})
+			.sort({ _id: -1 })
+			.limit(parseInt(req.query.limit, 10))
+			.toArray();
+	} else {
+		result = await postsCollection.find({}).limit(parseInt(req.query.limit, 10)).toArray();
+	}
 	// } else {
 	// result = await postsCollection.find({}).toArray();
 	// }
@@ -77,7 +85,5 @@ app.put("/api/posts/:id", async (req, res) => {
 // 		hello: "world",
 // 	});
 // });
-
-app.get("/api/post", (req, res) => {});
 
 app.listen(port, () => console.log("REST Api started!"));
