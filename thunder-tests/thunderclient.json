@@ -232,5 +232,111 @@
       "type": "json",
       "raw": "{\r\n  \"userId\":5,\r\n  \"date\":\"2020-02-03\",\r\n  \"products\":[{\"productId\":5,\"quantity\":1},{\"productId\":1,\"quantity\":5}]\r\n}"
     }
+  },
+  {
+    "_id": "64cf8618-6843-4818-a38b-57c580618c2a",
+    "colId": "9135c07e-8cee-4bfb-acc4-052e687d83ab",
+    "containerId": "",
+    "name": "Add post",
+    "url": "localhost:3000/api/posts",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2023-05-09T11:35:30.414Z",
+    "modified": "2023-05-09T12:23:34.963Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"title\": \"Third blog post\",\n  \"content\": \"This content is great!\",\n  \"date\": \"2002-01-02T00:00:00.000Z\",\n  \"tags\": [\n    \"third-post\",\n    \"whatever\"\n  ]\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "fec0d69d-b2ed-4e6e-8384-20a4b303e893",
+    "colId": "9135c07e-8cee-4bfb-acc4-052e687d83ab",
+    "containerId": "",
+    "name": "Get all posts",
+    "url": "localhost:3000/api/posts?limit=2",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2023-05-09T11:42:53.349Z",
+    "modified": "2023-05-09T12:27:53.640Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "2",
+        "isPath": false
+      }
+    ],
+    "tests": []
+  },
+  {
+    "_id": "0743c868-f2bf-42ef-b951-1c620adf6a96",
+    "colId": "9135c07e-8cee-4bfb-acc4-052e687d83ab",
+    "containerId": "",
+    "name": "Get single post",
+    "url": "localhost:3000/api/posts/2",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2023-05-09T11:45:40.271Z",
+    "modified": "2023-05-09T12:18:14.360Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "b4ad80a9-49ca-4db4-99ad-197e00d4605e",
+    "colId": "9135c07e-8cee-4bfb-acc4-052e687d83ab",
+    "containerId": "",
+    "name": "Update post",
+    "url": "localhost:3000/api/posts/645a30b5270a26252cc3de2b",
+    "method": "PUT",
+    "sortNum": 40000,
+    "created": "2023-05-09T11:55:51.157Z",
+    "modified": "2023-05-09T12:01:39.218Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"title\": \"First blog post is updated\",\n  \"content\": \"Woow! wow!\",\n  \"date\": \"2002-01-01T00:00:00.000Z\",\n  \"tags\": [\n    \"first-post\",\n    \"new\",\n    \"added-tag\"\n  ]\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "1a1a7823-12d0-491d-9820-509f56b1cb65",
+    "colId": "9135c07e-8cee-4bfb-acc4-052e687d83ab",
+    "containerId": "",
+    "name": "Delete post",
+    "url": "localhost:3000/api/posts/1",
+    "method": "DELETE",
+    "sortNum": 50000,
+    "created": "2023-05-09T12:22:28.373Z",
+    "modified": "2023-05-09T12:23:44.365Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "5bb63f62-a85f-4d21-8e41-c04e45524132",
+    "colId": "9135c07e-8cee-4bfb-acc4-052e687d83ab",
+    "containerId": "",
+    "name": "Get some posts",
+    "url": "localhost:3000/api/posts?limit=1",
+    "method": "GET",
+    "sortNum": 25000,
+    "created": "2023-05-09T12:27:40.630Z",
+    "modified": "2023-05-09T12:30:08.492Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "limit",
+        "value": "1",
+        "isPath": false
+      }
+    ],
+    "tests": []
   }
 ]

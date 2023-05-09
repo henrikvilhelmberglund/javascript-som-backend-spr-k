@@ -183,5 +183,19 @@
       }
     ],
     "tests": []
+  },
+  {
+    "_id": "747cbd27-6897-4f0a-91ed-11a4030795de",
+    "colId": "history",
+    "containerId": "",
+    "name": "localhost:3000",
+    "url": "localhost:3000",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-05-09T11:15:57.168Z",
+    "modified": "2023-05-09T11:15:57.168Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
