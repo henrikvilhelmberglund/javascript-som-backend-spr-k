@@ -1,16 +1,236 @@
 [
   {
-    "_id": "7d55a65f-ae15-426d-be9c-294a1f03000b",
-    "colId": "40f1f922-4e69-44ad-a902-e82d1be62c1e",
+    "_id": "8ebab0fb-440b-4c32-b190-77596276d277",
+    "colId": "ac215d69-ebdf-43c2-81c9-aeed20f0ce94",
     "containerId": "",
     "name": "Get all",
     "url": "{{baseServer}}/products",
     "method": "GET",
     "sortNum": 10000,
-    "created": "2023-05-09T07:39:56.070Z",
-    "modified": "2023-05-09T07:40:05.118Z",
+    "created": "2023-05-09T07:46:54.483Z",
+    "modified": "2023-05-09T07:46:54.483Z",
+    "headers": []
+  },
+  {
+    "_id": "9490e9af-594a-4829-9a01-cafcccb57119",
+    "colId": "ac215d69-ebdf-43c2-81c9-aeed20f0ce94",
+    "containerId": "",
+    "name": "Get single",
+    "url": "{{baseServer}}/products/1",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2023-05-09T07:46:54.484Z",
+    "modified": "2023-05-09T07:46:54.484Z",
+    "headers": []
+  },
+  {
+    "_id": "be5ddbe5-7b0e-4dc4-8129-e659fc6520d5",
+    "colId": "ac215d69-ebdf-43c2-81c9-aeed20f0ce94",
+    "containerId": "",
+    "name": "Get all descending",
+    "url": "{{baseServer}}/products?sort=desc",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2023-05-09T07:46:54.485Z",
+    "modified": "2023-05-09T07:46:54.485Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "sort",
+        "value": "desc"
+      }
+    ]
+  },
+  {
+    "_id": "13e911b2-c54f-43fd-bf40-f468c329d0dd",
+    "colId": "ac215d69-ebdf-43c2-81c9-aeed20f0ce94",
+    "containerId": "",
+    "name": "Get all categories",
+    "url": "{{baseServer}}/products/categories",
+    "method": "GET",
+    "sortNum": 40000,
+    "created": "2023-05-09T07:46:54.486Z",
+    "modified": "2023-05-09T07:46:54.486Z",
+    "headers": []
+  },
+  {
+    "_id": "5b399a02-5a48-46b0-b4e6-026899e4d929",
+    "colId": "ac215d69-ebdf-43c2-81c9-aeed20f0ce94",
+    "containerId": "",
+    "name": "Get all products in certain category",
+    "url": "{{baseServer}}/products/category/jewelery",
+    "method": "GET",
+    "sortNum": 50000,
+    "created": "2023-05-09T07:46:54.487Z",
+    "modified": "2023-05-09T07:46:54.487Z",
+    "headers": []
+  },
+  {
+    "_id": "7b6d7993-3976-4ffa-9384-47872865c88b",
+    "colId": "ac215d69-ebdf-43c2-81c9-aeed20f0ce94",
+    "containerId": "",
+    "name": "Update product",
+    "url": "{{baseServer}}/products/7",
+    "method": "PUT",
+    "sortNum": 60000,
+    "created": "2023-05-09T07:46:54.488Z",
+    "modified": "2023-05-09T07:47:30.985Z",
     "headers": [],
     "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n\t\"title\": \"test product\",\n\t\"price\": 13.5,\n\t\"description\": \"lorem ipsum set\",\n\t\"image\": \"https://i.pravatar.cc\",\n\t\"category\": \"electronic\"\n}",
+      "form": []
+    },
     "tests": []
+  },
+  {
+    "_id": "a1452062-2297-47c2-a60b-637c5aa6b72a",
+    "colId": "ac215d69-ebdf-43c2-81c9-aeed20f0ce94",
+    "containerId": "",
+    "name": "Delete product",
+    "url": "{{baseServer}}/products/6",
+    "method": "DELETE",
+    "sortNum": 70000,
+    "created": "2023-05-09T07:46:54.489Z",
+    "modified": "2023-05-09T07:46:54.489Z",
+    "headers": []
+  },
+  {
+    "_id": "c68f01be-4a16-40d4-9d4e-65e0e66fe859",
+    "colId": "ac215d69-ebdf-43c2-81c9-aeed20f0ce94",
+    "containerId": "",
+    "name": "Post",
+    "url": "{{baseServer}}/products",
+    "method": "POST",
+    "sortNum": 80000,
+    "created": "2023-05-09T07:46:54.490Z",
+    "modified": "2023-05-09T07:46:54.490Z",
+    "headers": [],
+    "body": {
+      "type": "json",
+      "raw": "{\r\n\t\"title\": \"test product\",\r\n\t\"price\": 13.5,\r\n\t\"description\": \"lorem ipsum set\",\r\n\t\"image\": \"https://i.pravatar.cc\",\r\n\t\"category\": \"electronic\"\r\n}"
+    }
+  },
+  {
+    "_id": "52ff4602-3345-4830-9ac1-1d97d8084a33",
+    "colId": "c64376ff-6dd0-4313-852e-f0279370d49b",
+    "containerId": "",
+    "name": "Get all users",
+    "url": "{{baseServer}}/users",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2023-05-09T07:47:09.546Z",
+    "modified": "2023-05-09T07:47:09.546Z",
+    "headers": []
+  },
+  {
+    "_id": "4625098f-7481-4723-8317-a406e439a347",
+    "colId": "c64376ff-6dd0-4313-852e-f0279370d49b",
+    "containerId": "",
+    "name": "Get one user",
+    "url": "{{baseServer}}/users/4",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2023-05-09T07:47:09.547Z",
+    "modified": "2023-05-09T07:47:09.547Z",
+    "headers": []
+  },
+  {
+    "_id": "d980b02f-d832-4638-8505-c080dbef7eb2",
+    "colId": "c64376ff-6dd0-4313-852e-f0279370d49b",
+    "containerId": "",
+    "name": "Add user",
+    "url": "{{baseServer}}/users",
+    "method": "POST",
+    "sortNum": 30000,
+    "created": "2023-05-09T07:47:09.548Z",
+    "modified": "2023-05-09T07:47:49.784Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n\"email\":\"John@gmail.com\",\n\"username\":\"johnd\",\n\"password\":\"m38rmF$\",\n\"name\":{\n\"firstname\":\"John\",\n\"lastname\":\"Doe\"\n},\n\"address\":{\n\"city\":\"kilcoole\",\n\"street\":\"7835 new road\",\n\"number\":3,\n\"zipcode\":\"12926-3874\",\n\"geolocation\":{\n\"lat\":\"-37.3159\",\n\"long\":\"81.1496\"\n}\n},\n\"phone\":\"1-570-236-7033\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "558dd405-87f1-4cfe-b10f-73011cb55359",
+    "colId": "c64376ff-6dd0-4313-852e-f0279370d49b",
+    "containerId": "",
+    "name": "Update user",
+    "url": "{{baseServer}}/users/7",
+    "method": "PUT",
+    "sortNum": 40000,
+    "created": "2023-05-09T07:47:09.549Z",
+    "modified": "2023-05-09T07:47:09.549Z",
+    "headers": [],
+    "body": {
+      "type": "json",
+      "raw": "{\r\n\"email\":\"John@gmail.com\",\r\n\"username\":\"johnd\",\r\n\"password\":\"m38rmF$\",\r\n\"name\":{\r\n\"firstname\":\"John\",\r\n\"lastname\":\"Doe\"\r\n},\r\n\"address\":{\r\n\"city\":\"kilcoole\",\r\n\"street\":\"7835 new road\",\r\n\"number\":3,\r\n\"zipcode\":\"12926-3874\",\r\n\"geolocation\":{\r\n\"lat\":\"-37.3159\",\r\n\"long\":\"81.1496\"\r\n}\r\n},\r\n\"phone\":\"1-570-236-7033\"\r\n}"
+    }
+  },
+  {
+    "_id": "37b5d21e-c0ce-4e1a-b45d-9a562119c353",
+    "colId": "c64376ff-6dd0-4313-852e-f0279370d49b",
+    "containerId": "",
+    "name": "Delete user",
+    "url": "{{baseServer}}/users/7",
+    "method": "DELETE",
+    "sortNum": 50000,
+    "created": "2023-05-09T07:47:09.550Z",
+    "modified": "2023-05-09T07:47:09.550Z",
+    "headers": []
+  },
+  {
+    "_id": "44de71b6-dfad-43b8-ad62-db565696f575",
+    "colId": "7659f030-4448-4908-99fa-e2bbbe88b141",
+    "containerId": "",
+    "name": "Get all in cart",
+    "url": "{{baseServer}}/carts/5",
+    "method": "GET",
+    "sortNum": 10000,
+    "created": "2023-05-09T07:47:17.828Z",
+    "modified": "2023-05-09T07:47:17.828Z",
+    "headers": []
+  },
+  {
+    "_id": "1787abf0-cc69-4633-8799-8008d989e0d0",
+    "colId": "7659f030-4448-4908-99fa-e2bbbe88b141",
+    "containerId": "",
+    "name": "Get carts in date range",
+    "url": "{{baseServer}}/carts?startdate=2019-12-10&enddate=2020-10-10",
+    "method": "GET",
+    "sortNum": 20000,
+    "created": "2023-05-09T07:47:17.829Z",
+    "modified": "2023-05-09T07:47:17.829Z",
+    "headers": [],
+    "params": [
+      {
+        "name": "startdate",
+        "value": "2019-12-10"
+      },
+      {
+        "name": "enddate",
+        "value": "2020-10-10"
+      }
+    ]
+  },
+  {
+    "_id": "af6b8a64-510f-4d51-adde-92e83ad1d8d4",
+    "colId": "7659f030-4448-4908-99fa-e2bbbe88b141",
+    "containerId": "",
+    "name": "Add product in cart",
+    "url": "{{baseServer}}/carts",
+    "method": "POST",
+    "sortNum": 30000,
+    "created": "2023-05-09T07:47:17.830Z",
+    "modified": "2023-05-09T07:47:17.830Z",
+    "headers": [],
+    "body": {
+      "type": "json",
+      "raw": "{\r\n  \"userId\":5,\r\n  \"date\":\"2020-02-03\",\r\n  \"products\":[{\"productId\":5,\"quantity\":1},{\"productId\":1,\"quantity\":5}]\r\n}"
+    }
   }
 ]
