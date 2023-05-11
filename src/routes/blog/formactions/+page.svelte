@@ -15,10 +15,11 @@
 	</main>
 {/if}
 
+<!-- TODO add other stuff here -->
 {#if form?.deleted}
 	<!-- this message is ephemeral; it exists because the page was rendered in
-           response to a form submission. it will vanish if the user reloads -->
-	<p>Successfully deleted!</p>
+    response to a form submission. it will vanish if the user reloads -->
+	<h1 class="text-4xl text-red-500">Successfully deleted post!</h1>
 {/if}
 
 <style>
