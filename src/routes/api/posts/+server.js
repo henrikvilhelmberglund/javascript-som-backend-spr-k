@@ -1,21 +1,27 @@
 import { error, json } from "@sveltejs/kit";
-import { postsCollection } from "../../hooks.server";
-
+import { getPostsCollection } from "../../../hooks.server";
 /** @type {import('./$types').RequestHandler} */
-// export function GET({ url }) {
-// 	return json({ hello: "world" });
-// }
 
+const postsCollection = await getPostsCollection();
 
 export async function GET({ url, request }) {
 	let result;
 	const limit = parseInt(url.searchParams.get("limit", 10));
 	const latest = url.searchParams.get("latest");
+	console.log(latest);
+	const tag = url.searchParams.get("tag");
 
-	if (latest) {
-		result = await postsCollection.find({}).sort({ _id: -1 }).limit(parseInt(limit, 10)).toArray();
+	if (latest === "true") {
+		result = await postsCollection
+			.find(tag ? { tags: tag } : {})
+			.sort({ date: -1 })
+			.limit(parseInt(limit, 10))
+			.toArray();
 	} else {
-		result = await postsCollection.find({}).limit(limit).toArray();
+		result = await postsCollection
+			.find(tag ? { tags: tag } : {})
+			.limit(limit)
+			.toArray();
 	}
 
 	return json({
@@ -32,4 +38,3 @@ export async function POST({ url, request }) {
 		result,
 	});
 }
-
