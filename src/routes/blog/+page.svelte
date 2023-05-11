@@ -1,10 +1,21 @@
 <script>
+	import { fly } from "svelte/transition";
 	import Footer from "$lib/Footer.svelte";
 	import Post from "./Post.svelte";
+	import { onMount } from "svelte";
 	import { toNiceDate } from "$lib/helpers.js";
 	export let data;
+	export let form;
 
 	let creatingNewPost = false;
+	let showMessage = true;
+	let loaded = false;
+	onMount(() => {
+		loaded = true;
+		setTimeout(() => {
+			showMessage = false;
+		}, 1000);
+	});
 
 	const blogPost = {
 		title: "The best title",
@@ -35,7 +46,7 @@
 		<div class="flex h-96 w-full flex-col items-center justify-center">
 			<form
 				class="flex h-[100%] w-[50%] flex-col justify-between rounded bg-slate-100 p-8 [&>*]:m-1"
-				action="/blog/formactions?/newPost"
+				action="?/newPost"
 				method="POST">
 				<input
 					type="text"
@@ -60,6 +71,25 @@
 			</form>
 		</div>
 	</div>
+{/if}
+
+{#if loaded}
+	{#if form?.successful && showMessage}
+		<main
+			transition:fly={{ y: 50 }}
+			class:bg-green-200={form.type === "POST"}
+			class:bg-red-200={form.type === "DELETE"}
+			class:bg-blue-200={form.type === "PUT"}
+			class="absolute left-[50%] top-[50%] translate-x-[-25%] rounded-xl p-12 text-center">
+			{#if form.type === "POST"}
+				<h1 class="text-4xl text-green-500">Successfully added new post!</h1>
+			{:else if form.type === "DELETE"}
+				<h1 class="text-4xl text-red-500">Successfully deleted post!</h1>
+			{:else if form.type === "PUT"}
+				<h1 class="text-4xl text-blue-500">Successfully updated post!</h1>
+			{/if}
+		</main>
+	{/if}
 {/if}
 
 <Footer />

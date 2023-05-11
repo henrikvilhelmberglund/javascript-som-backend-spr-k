@@ -1,10 +1,7 @@
 <script>
 	import Nav from "$lib/Nav.svelte";
 
-	const routes = [
-		{ link: "/", display: "Blog home" },
-		{ link: "/add-post", display: "Add post" },
-	];
+	const routes = [{ link: "/", display: "Blog home" }];
 	const prefix = "/blog";
 </script>
 
