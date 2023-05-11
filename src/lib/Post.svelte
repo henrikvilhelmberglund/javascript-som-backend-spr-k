@@ -4,7 +4,7 @@
 	export let post;
 </script>
 
-<div class="flex w-[60%] items-center from-slate-200 to-slate-300 bg-gradient-to-b p-4 rounded-md">
+<div class="flex flex-col w-[60%] items-center from-slate-200 to-slate-300 bg-gradient-to-b p-4 rounded-md">
 	<h2 class="text-2xl">{post.title}</h2>
 	<p>{toNiceDate(post.date)}</p>
 	<p class="text-lg">{post.content}</p>
