@@ -62,7 +62,7 @@ Kommaseparation - vanligt sätt att göra enskild sträng till en lista med item
 
 .split(",") i "a, b, c" blir då array, kan sedan .join() med kommatecken om man vill få tillbaka strängen
 
-Form reset - rensa formulär: <button type = "reset">, postForm.reset(), addEventListener("reset", ()=>{})
+Form reset - rensa formulär: `<button type = "reset">`, postForm.reset(), addEventListener("reset", ()=>{})
 
 Timestamps - när man skapar/uppdaterar vill man veta när det hände - automatisk sådan kallas för timestamp
 
