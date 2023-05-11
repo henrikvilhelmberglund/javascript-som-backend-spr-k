@@ -5,7 +5,7 @@ export async function load({ url }) {
 	let result;
 	// const latest = true;
 	const latest = url.searchParams.get("latest");
-	console.log(latest);
+	// console.log(latest);
 	const limit = 0;
 
 	if (latest === "false") {
