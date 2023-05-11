@@ -1,6 +1,6 @@
 <script>
 	import Footer from "$lib/Footer.svelte";
-	import Post from "$lib/Post.svelte";
+	import Post from "./Post.svelte";
 	import { toNiceDate } from "$lib/helpers.js";
 	export let data;
 
@@ -35,7 +35,7 @@
 		<div class="flex h-96 w-full flex-col items-center justify-center">
 			<form
 				class="flex h-[100%] w-[50%] flex-col justify-between rounded bg-slate-100 p-8 [&>*]:m-1"
-				action="/blog/new-post?/newPost"
+				action="/blog/formactions?/newPost"
 				method="POST">
 				<input
 					type="text"
