@@ -68,11 +68,14 @@ export const actions = {
 		// console.log(request.body);
 		const data = await request.formData();
 		let { title, content, date, tags } = Object.fromEntries(data);
+		date = new Date(date);
 		tags = tags.replaceAll(" ,", ",").split(",");
 		console.log("Title:", title);
 		console.log("Content:", content);
 		console.log("Tags:", tags);
+		console.log("date", date);
 		const body = { title, content, date, tags };
+		console.log(body.date);
 		const postId = data.get("post-id");
 		const post = await postsCollection.findOne({
 			_id: new ObjectId(postId),
