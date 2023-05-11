@@ -20,28 +20,25 @@ export const actions = {
 		const result = await postsCollection.insertOne(body);
 		result.insertedId = result.insertedId.toString();
 		console.log(result);
+		return { successful: true, type: "POST" };
 	},
 	deletePost: async ({ request }) => {
 		const postsCollection = await getPostsCollection();
-		// app.delete("/api/posts/:id", async (req, res) => {
-		// const offsetNumber = +params.id - 1;
-		// const foundPost = await postsCollection
-		//   .find({})
-		//   .skip(offsetNumber)
-		//   .sort({ _id: 1 })
-		//   .limit(1)
-		//   .toArray();
 
 		const data = await request.formData();
-		let { id } = Object.fromEntries(data);
+		// let { id } = Object.fromEntries(data);
+		const postId = data.get("post-id");
+		const post = await postsCollection.findOne({
+			_id: new ObjectId(postId),
+		});
 		// id = new ObjectId(id);
-		console.log(id);
-		const result = await postsCollection.deleteOne(id);
+		console.log(post);
+		const result = await postsCollection.deleteOne(post);
 		// const result = await postsCollection.findOne({ _id: new ObjectId(req.params.id) });
 		console.log(result);
 		// return json({
 		//   result,
 		// });
-		return { deleted: true };
+		return { successful: true, type: "DELETE" };
 	},
 };
