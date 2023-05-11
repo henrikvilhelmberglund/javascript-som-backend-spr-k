@@ -1,11 +1,15 @@
 <script>
-	import { toNiceDate } from "./helpers";
+	import { toNiceDate } from "../../lib/helpers";
 
 	export let post;
 </script>
 
-<div class="flex flex-col w-[60%] items-center from-slate-200 to-slate-300 bg-gradient-to-b p-4 rounded-md">
+<div
+	class="flex w-[60%] flex-col items-center rounded-md bg-gradient-to-b from-slate-200 to-slate-300 p-4">
 	<h2 class="text-2xl">{post.title}</h2>
+	<form class="absolute self-end" method="POST" action="/blog/formactions?/deletePost">
+		<button name={post._id}>❌</button>
+	</form>
 	<p>{toNiceDate(post.date)}</p>
 	<p class="text-lg">{post.content}</p>
 	<div class="flex flex-row gap-2 self-end pt-9">
