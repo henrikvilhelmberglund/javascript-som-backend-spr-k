@@ -1,15 +1,17 @@
-import { getPostsCollection } from "../../../hooks.server";
+import { getPostsCollection } from "../../hooks.server";
 /** @type {import('./$types').PageServerLoad} */
-export async function load() {
+export async function load({ url }) {
 	const postsCollection = await getPostsCollection();
 	let result;
-	const latest = true;
+	// const latest = true;
+	const latest = url.searchParams.get("latest");
+	console.log(latest);
 	const limit = 0;
 
-	if (latest) {
-		result = await postsCollection.find({}).sort({ _id: -1 }).limit(parseInt(limit, 10)).toArray();
-	} else {
+	if (latest === "false") {
 		result = await postsCollection.find({}).limit(limit).toArray();
+	} else {
+		result = await postsCollection.find({}).sort({ date: -1 }).limit(parseInt(limit, 10)).toArray();
 	}
 
 	result.forEach((item) => {
