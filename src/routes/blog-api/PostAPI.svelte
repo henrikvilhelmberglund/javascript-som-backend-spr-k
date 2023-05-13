@@ -10,6 +10,9 @@
 
 <div
 	class="flex w-[60%] flex-col items-center rounded-md bg-gradient-to-b from-slate-200 to-slate-300 p-4">
+	{#if !post.title || !post.content}
+		<p class="text-xl text-red-500">Post with ID {post._id} has invalid data</p>
+	{/if}
 	<h2 class="text-2xl">{post.title}</h2>
 	<button class="absolute mr-12 self-end" on:click={() => (isEditing = true)}>🖋</button>
 

@@ -34,30 +34,7 @@
 			class="mr-[20%] self-end rounded-lg bg-green-400 p-2 hover:bg-green-300">Add new post</button>
 		{#if data.posts.length > 0}
 			{#each data.posts as post}
-				{#if post.title && post.content}
-					<Post {post} />
-				{:else}
-					<div class="flex flex-row w-auto">
-						<p class="text-xl text-red-500">Post with ID {post._id} has invalid data</p>
-						<button
-							on:click={async (event) => {
-								const response = await fetch(`http://localhost:5173/api/posts/${post._id}`, {
-									method: "DELETE",
-								});
-								const data = await response.json();
-
-								console.log(data);
-
-								$messageStore = { type: "DELETE" };
-								invalidateAll();
-								setTimeout(() => {
-									$messageStore = null;
-								}, 2000);
-							}}
-              class="pl-4"
-							>❌</button>
-					</div>
-				{/if}
+				<Post {post} />
 			{/each}
 		{:else}
 			<h2 class="text-2xl">There are no posts yet!</h2>
@@ -76,7 +53,7 @@
 					const formData = new FormData(event.target);
 					let { title, content, tags } = Object.fromEntries(formData);
 					// date = new Date();
-					const body = { title, content,  tags };
+					const body = { title, content, tags };
 
 					const response = await fetch("http://localhost:5173/api/posts", {
 						method: "POST",
