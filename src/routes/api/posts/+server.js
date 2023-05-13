@@ -1,5 +1,6 @@
 import { error, json } from "@sveltejs/kit";
 import { getPostsCollection } from "$lib/hooks.server";
+import chalk from "chalk";
 /** @type {import('./$types').RequestHandler} */
 
 const postsCollection = await getPostsCollection();
@@ -30,8 +31,17 @@ export async function GET({ url, request }) {
 }
 
 export async function POST({ url, request }) {
-	const body = await request.json();
+	const incomingBody = await request.json();
 	// const body = result.body;
+	let { title, content, tags } = incomingBody;
+
+	const date = new Date();
+	tags = tags = tags.replaceAll(" ,", ",").split(",");
+
+	const body = { title, content, date, tags };
+
+	console.log(chalk.blue(JSON.stringify(body)));
+	// let { title, content, date, tags } = Object.fromEntries(formData);
 	const result = await postsCollection.insertOne(body);
 	console.log(result);
 	return json({
