@@ -37,7 +37,26 @@
 				{#if post.title && post.content}
 					<Post {post} />
 				{:else}
-					<p class="text-xl text-red-500">Post with ID {post._id} has invalid data</p>
+					<div class="flex flex-row w-auto">
+						<p class="text-xl text-red-500">Post with ID {post._id} has invalid data</p>
+						<button
+							on:click={async (event) => {
+								const response = await fetch(`http://localhost:5173/api/posts/${post._id}`, {
+									method: "DELETE",
+								});
+								const data = await response.json();
+
+								console.log(data);
+
+								$messageStore = { type: "DELETE" };
+								invalidateAll();
+								setTimeout(() => {
+									$messageStore = null;
+								}, 2000);
+							}}
+              class="pl-4"
+							>❌</button>
+					</div>
 				{/if}
 			{/each}
 		{:else}
@@ -56,8 +75,7 @@
 					// const data = await request.formData();
 					const formData = new FormData(event.target);
 					let { title, content, date, tags } = Object.fromEntries(formData);
-					date = new Date();
-					tags = tags.replaceAll(" ,", ",").split(",");
+					// date = new Date();
 					const body = { title, content, date, tags };
 
 					const response = await fetch("http://localhost:5173/api/posts", {
@@ -111,7 +129,7 @@
 			class:bg-green-200={$messageStore.type === "POST"}
 			class:bg-red-200={$messageStore.type === "DELETE"}
 			class:bg-blue-200={$messageStore.type === "PUT"}
-			class="absolute left-[50%] top-[50%] translate-x-[-50%] rounded-xl p-12 text-center">
+			class="fixed left-[50%] top-[50%] translate-x-[-50%] rounded-xl p-12 text-center">
 			{#if $messageStore.type === "POST"}
 				<h1 class="text-4xl text-green-500">Successfully added new post!</h1>
 			{:else if $messageStore.type === "DELETE"}
