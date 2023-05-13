@@ -74,9 +74,9 @@
 				on:submit|preventDefault={async (event) => {
 					// const data = await request.formData();
 					const formData = new FormData(event.target);
-					let { title, content, date, tags } = Object.fromEntries(formData);
+					let { title, content, tags } = Object.fromEntries(formData);
 					// date = new Date();
-					const body = { title, content, date, tags };
+					const body = { title, content,  tags };
 
 					const response = await fetch("http://localhost:5173/api/posts", {
 						method: "POST",
