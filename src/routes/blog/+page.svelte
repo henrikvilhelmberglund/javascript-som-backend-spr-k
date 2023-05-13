@@ -4,17 +4,16 @@
 	import Post from "./Post.svelte";
 	import { onMount } from "svelte";
 	import { toNiceDate } from "$lib/helpers.js";
+	import { enhance } from "$app/forms";
+	import { clickOutside } from "$lib/actions";
 	export let data;
 	export let form;
+	let showMessage = false;
 
 	let creatingNewPost = false;
-	let showMessage = true;
 	let loaded = false;
 	onMount(() => {
 		loaded = true;
-		setTimeout(() => {
-			showMessage = false;
-		}, 1000);
 	});
 
 	const blogPost = {
@@ -33,7 +32,7 @@
 			class="mr-[20%] self-end rounded-lg bg-green-400 p-2 hover:bg-green-300">Add new post</button>
 		{#if data.posts.length > 0}
 			{#each data.posts as post}
-				<Post {post} />
+				<Post bind:showMessage {post} />
 			{/each}
 		{:else}
 			<h2 class="text-2xl">There are no posts yet!</h2>
@@ -45,6 +44,15 @@
 	<div class="absolute left-0 top-56 w-full">
 		<div class="flex h-96 w-full flex-col items-center justify-center">
 			<form
+				use:enhance
+				use:clickOutside={() => (creatingNewPost = false)}
+				on:submit={() => {
+					creatingNewPost = false;
+					showMessage = true;
+					setTimeout(() => {
+						showMessage = false;
+					}, 2000);
+				}}
 				class="flex h-[100%] w-[50%] flex-col justify-between rounded bg-slate-100 p-8 [&>*]:m-1"
 				action="?/newPost"
 				method="POST">
@@ -80,7 +88,7 @@
 			class:bg-green-200={form.type === "POST"}
 			class:bg-red-200={form.type === "DELETE"}
 			class:bg-blue-200={form.type === "PUT"}
-			class="absolute left-[50%] top-[50%] translate-x-[-25%] rounded-xl p-12 text-center">
+			class="absolute left-[50%] top-[50%] translate-x-[-50%] rounded-xl p-12 text-center">
 			{#if form.type === "POST"}
 				<h1 class="text-4xl text-green-500">Successfully added new post!</h1>
 			{:else if form.type === "DELETE"}
