@@ -43,12 +43,27 @@
 
 {#if isEditing}
 	<form
-		on:submit={() => {
+		on:submit|preventDefault={async () => {
 			isEditing = false;
+
+			const formData = new FormData(event.target);
+			let { title, content, date, tags } = Object.fromEntries(formData);
+			const body = { title, content, date, tags };
+
+			const response = await fetch(`http://localhost:5173/api/posts/${post._id}`, {
+				method: "PUT",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(body),
+			});
+			const data = await response.json();
+
+			console.log(data);
+
 			$messageStore = { type: "PUT" };
 			setTimeout(() => {
 				$messageStore = null;
 			}, 2000);
+			invalidateAll();
 		}}
 		class="flex h-[100%] w-[50%] flex-col justify-between rounded bg-slate-100 p-8 [&>*]:m-1">
 		<input
