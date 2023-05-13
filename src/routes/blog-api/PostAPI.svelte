@@ -1,8 +1,9 @@
 <script>
+	import { invalidateAll } from "$app/navigation";
 	import { toNiceDate } from "../../lib/helpers";
+	import { messageStore } from "./stores";
 
 	export let post = {};
-	export let showMessage = false;
 
 	let isEditing = false;
 </script>
@@ -21,9 +22,10 @@
 
 			console.log(data);
 
-			showMessage = true;
+			$messageStore = { type: "DELETE" };
+			invalidateAll();
 			setTimeout(() => {
-				showMessage = false;
+				$messageStore = null;
 			}, 2000);
 		}}
 		class="absolute self-end">❌</button>

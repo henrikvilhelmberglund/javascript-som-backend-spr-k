@@ -6,12 +6,14 @@
 	import { toNiceDate } from "$lib/helpers.js";
 	import { enhance } from "$app/forms";
 	import { clickOutside } from "$lib/actions";
+	import { invalidateAll } from "$app/navigation";
+	import { messageStore } from "./stores";
+
 	export let data;
-	export let form;
-	let showMessage = false;
 
 	let creatingNewPost = false;
 	let loaded = false;
+
 	onMount(() => {
 		loaded = true;
 	});
@@ -33,7 +35,7 @@
 		{#if data.posts.length > 0}
 			{#each data.posts as post}
 				{#if post.title && post.content}
-					<Post bind:showMessage {post} />
+					<Post {post} />
 				{:else}
 					<p class="text-xl text-red-500">Post with ID {post._id} has invalid data</p>
 				{/if}
@@ -69,10 +71,11 @@
 
 					console.log(data);
 					creatingNewPost = false;
-					showMessage = true;
+					$messageStore = { type: "POST" };
 					setTimeout(() => {
-						showMessage = false;
+						$messageStore = null;
 					}, 2000);
+					invalidateAll();
 				}}
 				class="flex h-[100%] w-[50%] flex-col justify-between rounded bg-slate-100 p-8 [&>*]:m-1"
 				method="POST">
@@ -102,18 +105,18 @@
 {/if}
 
 {#if loaded}
-	{#if form?.successful && showMessage}
+	{#if $messageStore}
 		<main
 			transition:fly={{ y: 50 }}
-			class:bg-green-200={form.type === "POST"}
-			class:bg-red-200={form.type === "DELETE"}
-			class:bg-blue-200={form.type === "PUT"}
+			class:bg-green-200={$messageStore.type === "POST"}
+			class:bg-red-200={$messageStore.type === "DELETE"}
+			class:bg-blue-200={$messageStore.type === "PUT"}
 			class="absolute left-[50%] top-[50%] translate-x-[-50%] rounded-xl p-12 text-center">
-			{#if form.type === "POST"}
+			{#if $messageStore.type === "POST"}
 				<h1 class="text-4xl text-green-500">Successfully added new post!</h1>
-			{:else if form.type === "DELETE"}
+			{:else if $messageStore.type === "DELETE"}
 				<h1 class="text-4xl text-red-500">Successfully deleted post!</h1>
-			{:else if form.type === "PUT"}
+			{:else if $messageStore.type === "PUT"}
 				<h1 class="text-4xl text-blue-500">Successfully updated post!</h1>
 			{/if}
 		</main>
