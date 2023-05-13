@@ -45,9 +45,9 @@
 	<form
 		on:submit={() => {
 			isEditing = false;
-			showMessage = true;
+			$messageStore = { type: "PUT" };
 			setTimeout(() => {
-				showMessage = false;
+				$messageStore = null;
 			}, 2000);
 		}}
 		class="flex h-[100%] w-[50%] flex-col justify-between rounded bg-slate-100 p-8 [&>*]:m-1">
