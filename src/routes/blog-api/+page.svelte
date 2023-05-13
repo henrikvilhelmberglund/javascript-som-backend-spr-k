@@ -1,7 +1,7 @@
 <script>
 	import { fly } from "svelte/transition";
 	import Footer from "$lib/Footer.svelte";
-	import Post from "./Post.svelte";
+	import Post from "./PostAPI.svelte";
 	import { onMount } from "svelte";
 	import { toNiceDate } from "$lib/helpers.js";
 	import { enhance } from "$app/forms";
@@ -32,7 +32,11 @@
 			class="mr-[20%] self-end rounded-lg bg-green-400 p-2 hover:bg-green-300">Add new post</button>
 		{#if data.posts.length > 0}
 			{#each data.posts as post}
-				<Post bind:showMessage {post} />
+				{#if post.title && post.content}
+					<Post bind:showMessage {post} />
+				{:else}
+					<p class="text-xl text-red-500">Post with ID {post._id} has invalid data</p>
+				{/if}
 			{/each}
 		{:else}
 			<h2 class="text-2xl">There are no posts yet!</h2>
@@ -43,10 +47,27 @@
 {#if creatingNewPost}
 	<div class="absolute left-0 top-56 w-full">
 		<div class="flex h-96 w-full flex-col items-center justify-center">
+			<!-- ? Add new post POST -->
 			<form
-				use:enhance
 				use:clickOutside={() => (creatingNewPost = false)}
-				on:submit={() => {
+				on:submit|preventDefault={async (event) => {
+					// const data = await request.formData();
+					const formData = new FormData(event.target);
+					let { title, content, date, tags } = Object.fromEntries(formData);
+					date = new Date();
+					tags = tags.replaceAll(" ,", ",").split(",");
+					const body = { title, content, date, tags };
+
+					const response = await fetch("http://localhost:5173/api/posts", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+						},
+						body: JSON.stringify(body),
+					});
+					const data = await response.json();
+
+					console.log(data);
 					creatingNewPost = false;
 					showMessage = true;
 					setTimeout(() => {
@@ -54,7 +75,6 @@
 					}, 2000);
 				}}
 				class="flex h-[100%] w-[50%] flex-col justify-between rounded bg-slate-100 p-8 [&>*]:m-1"
-				action="?/newPost"
 				method="POST">
 				<input
 					type="text"
