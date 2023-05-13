@@ -9,6 +9,7 @@
 		{ link: "/04lektion4", display: "Lektion 4" },
 		{ link: "/06lektion6", display: "Lektion 6" },
 		{ link: "/blog", display: "Blog" },
+		{ link: "/blog-api", display: "Blog API version" },
 	];
 </script>
 
