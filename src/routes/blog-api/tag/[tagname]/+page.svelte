@@ -1,6 +1,6 @@
 <script>
 	import Footer from "$lib/Footer.svelte";
-	import Post from "../../Post.svelte";
+	import Post from "../../PostAPI.svelte";
 	import { toNiceDate } from "$lib/helpers.js";
 
 	export let data;
