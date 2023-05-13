@@ -1,8 +1,7 @@
 <script>
-	import { enhance } from "$app/forms";
 	import { toNiceDate } from "../../lib/helpers";
 
-	export let post;
+	export let post = {};
 	export let showMessage = false;
 
 	let isEditing = false;
@@ -12,19 +11,23 @@
 	class="flex w-[60%] flex-col items-center rounded-md bg-gradient-to-b from-slate-200 to-slate-300 p-4">
 	<h2 class="text-2xl">{post.title}</h2>
 	<button class="absolute mr-12 self-end" on:click={() => (isEditing = true)}>🖋</button>
-	<form
-		use:enhance
-		on:submit={() => {
+
+	<button
+		on:click={async (event) => {
+			const response = await fetch(`http://localhost:5173/api/posts/${post._id}`, {
+				method: "DELETE",
+			});
+			const data = await response.json();
+
+			console.log(data);
+
 			showMessage = true;
 			setTimeout(() => {
 				showMessage = false;
 			}, 2000);
 		}}
-		class="absolute self-end"
-		method="POST"
-		action="/blog?/deletePost">
-		<button name="post-id" value={post._id}>❌</button>
-	</form>
+		class="absolute self-end">❌</button>
+
 	<p>{toNiceDate(post.date)}</p>
 	<p class="text-lg">{post.content}</p>
 	<div class="flex flex-row gap-2 self-end pt-9">
@@ -38,7 +41,6 @@
 
 {#if isEditing}
 	<form
-		use:enhance
 		on:submit={() => {
 			isEditing = false;
 			showMessage = true;
@@ -46,9 +48,7 @@
 				showMessage = false;
 			}, 2000);
 		}}
-		class="flex h-[100%] w-[50%] flex-col justify-between rounded bg-slate-100 p-8 [&>*]:m-1"
-		action="/blog?/updatePost"
-		method="POST">
+		class="flex h-[100%] w-[50%] flex-col justify-between rounded bg-slate-100 p-8 [&>*]:m-1">
 		<input
 			type="text"
 			name="title"
