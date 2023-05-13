@@ -5,8 +5,8 @@ export function start_mongo() {
 	return client.connect();
 }
 
-const client = await MongoClient.connect("mongodb://localhost:27017/bookstore");
-const db = client.db();
+const client = await MongoClient.connect("mongodb://127.0.0.1:27017/");
+const db = client.db("bookstore");
 const collection = db.collection("books");
 // export const books = await collection.find().toArray();
 // console.log(books);
