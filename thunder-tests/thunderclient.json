@@ -364,11 +364,11 @@
     "colId": "78f8181a-4138-4c41-9256-c3241edb6a92",
     "containerId": "",
     "name": "Add post",
-    "url": "localhost:5173/api/posts",
+    "url": "[::1]:5173/api/posts",
     "method": "POST",
     "sortNum": 10000,
     "created": "2023-05-09T12:55:54.180Z",
-    "modified": "2023-05-09T13:03:46.880Z",
+    "modified": "2023-05-13T12:39:43.118Z",
     "headers": [],
     "params": [],
     "body": {
