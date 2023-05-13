@@ -73,10 +73,11 @@
 			type="text"
 			name="title"
 			value={post.title}
+			required
 			class="outline-px rounded-sm p-1 outline"
 			placeholder="Title" />
 		<input type="text" name="date" value={post.date} class="hidden" placeholder="" />
-		<textarea class="p-1" value={post.content} name="content" id="" cols="30" rows="10" />
+		<textarea class="p-1" value={post.content} required name="content" id="" cols="30" rows="10" />
 		<input
 			type="text"
 			name="tags"

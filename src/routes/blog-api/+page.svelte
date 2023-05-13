@@ -77,6 +77,7 @@
 				<input
 					type="text"
 					name="title"
+          required
 					bind:value={blogPost.title}
 					class="outline-px rounded-sm p-1 outline"
 					placeholder="Title" />
@@ -84,6 +85,7 @@
 					class="p-1"
 					bind:value={blogPost.content}
 					name="content"
+          required
 					id=""
 					cols="30"
 					rows="10" />
