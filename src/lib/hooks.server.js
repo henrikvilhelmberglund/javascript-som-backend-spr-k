@@ -4,7 +4,7 @@ let client;
 
 async function run() {
 	try {
-		client = new MongoClient("mongodb://localhost:27017");
+		client = new MongoClient("mongodb://127.0.0.1:27017");
 		await client.connect();
 		await client.db("admin").command({ ping: 1 });
 		console.log("Pinged your deployment. You successfully connected to MongoDB!");

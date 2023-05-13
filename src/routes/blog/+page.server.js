@@ -1,4 +1,4 @@
-import { getPostsCollection } from "../../hooks.server";
+import { getPostsCollection } from "$lib/hooks.server";
 import { ObjectId } from "mongodb";
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ url }) {

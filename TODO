@@ -1,2 +1,2 @@
 ☐ rewrite using API for everything instead of form actions (or call API from form action)
-☐ add alias for hooks.server.js location (src)
+✘ add alias for hooks.server.js location (src) @cancelled(23-05-13 13:38) (src alias didn't work, moved hooks.server.js to lib and use $lib)

@@ -1,5 +1,5 @@
 import { error, json } from "@sveltejs/kit";
-import { getPostsCollection } from "../../../hooks.server";
+import { getPostsCollection } from "$lib/hooks.server";
 /** @type {import('./$types').RequestHandler} */
 
 const postsCollection = await getPostsCollection();
