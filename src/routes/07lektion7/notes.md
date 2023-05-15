@@ -49,3 +49,56 @@ Dessa egenskaper går sedan att titta på vid senare requests (kolla sessioncook
 Detta ligger på servern och inte på klienten
 
 ## Autentisering
+
+Autentisering är sättet användares identitet blir verifierade
+
+Kallar username och password "credentials"
+
+Vi behöver annan metod än HTTP för HTTP är stateless, vi kan istället ha session cookies där vi ger varje användare ett ID
+
+- Lagrar användaruppgifter i en databas
+
+- När man loggar in jämförs inputcredentials etc med databasen
+
+- Sparar uppgifter i sessioncookie
+
+- Backend svarar med hur det gick och cookies sparar i webbläsare
+
+- Nu skicka session cookie med varje request
+
+Kryptering - viktigt att kryptera lösenord så de inte går att läsa
+
+På det viset kan hackers inte läsa lösenord
+
+## Algoritmer, hash och salt
+
+Det sätt en sträng krypteras på kallas för en algoritm
+
+Finns flera som MD5, SHA, BCrypt
+
+En hash är resultat när en sträng (lösenordet) har körts genom algoritmen, detta sparas i detabasen
+
+Salt är extra tecken som läggs till strängen för att göra hashen mer unik och mer komplex att attackera
+
+Kryptering med bcrypt - ett populärt library för att kryptera
+
+Man kan sätta salt rounds för att göra det svårare att hacka, blir långsammare att hasha men ger bättre säkerhet
+
+## Middlewares i Express
+
+middleware - term för funktioner som körs när Express tar emot request
+
+Custom middleware - en funktion som tar emot 3 parametrar:
+
+- request
+
+- response
+
+- next
+
+next talar om att man är klar så det kan köra nästa middleware
+
+middlewares för enstaka routes - om man vill köra en middleware för en route kan man lägga in middleware som andra argument   app.get("/api/secretroute", restrict, (req, res) => {})
+
+
+
