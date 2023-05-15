@@ -197,5 +197,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "0088599a-1a9b-4888-a884-8ea05f07903b",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://127.0.0.1:5173/api/auth/login",
+    "url": "http://127.0.0.1:3000/api/auth/login",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-05-15T11:45:15.823Z",
+    "modified": "2023-05-15T11:51:39.141Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
