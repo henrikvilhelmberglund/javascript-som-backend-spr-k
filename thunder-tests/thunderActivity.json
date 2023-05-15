@@ -211,5 +211,19 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "c458ce45-7cac-4bf0-84db-1a4ffeb97353",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://127.0.0.1:5173/api/auth/loggedin",
+    "url": "http://127.0.0.1:5173/api/auth/loggedin",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-05-15T11:45:15.823Z",
+    "modified": "2023-05-15T12:18:34.270Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
