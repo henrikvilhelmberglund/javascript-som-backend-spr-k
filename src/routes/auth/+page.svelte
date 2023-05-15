@@ -1,15 +1,18 @@
 <script>
-	let state = "logged out";
+	import { beforeUpdate } from "svelte";
+	// let state = "logged out";
 	let user;
 	let pass;
 	let fetchData;
 
 	let error = {};
-</script>
 
+	export let data;
+</script>
+{data.state}
 <main class="[&>*]:m-4">
 	<h1 class="text-5xl">Auth page</h1>
-	{#if state === "logged out"}
+	{#if data.state === "logged out"}
 		<h2 class="text-4xl">Login</h2>
 		{#if Object.keys(error).length}
 			<!-- <h3 class="text-4xl">{error.status}: {error.text}</h3> -->
@@ -25,7 +28,7 @@
 					if (res.ok) {
 						fetchData = await res.json();
 						console.log(fetchData);
-						state = "logged in";
+						data.state = "logged in";
 					} else {
 						error = { status: 401, text: "Unauthorized" };
 					}
@@ -50,10 +53,25 @@
 				<button class="rounded-lg bg-green-400 p-2 hover:bg-green-300">Login</button>
 			</form>
 		</div>
-	{:else if state === "logged in"}
+	{:else if data.state === "logged in"}
 		<div>
-			<h2 class="text-4xl">Welcome {fetchData.user}!</h2>
+			<h2 class="text-4xl">Welcome {data.user?.user}!</h2>
 		</div>
+		<button
+			on:click={async () => {
+				const res = await fetch("http://localhost:5173/api/auth/logout", {
+					method: "POST",
+					body: JSON.stringify({ logout: true }),
+				});
+				if (res.ok) {
+					fetchData = await res.json();
+					console.log(fetchData);
+					data.state = "logged out";
+				} else {
+					error = { status: 401, text: "Unauthorized???" };
+				}
+			}}
+			class="rounded-lg bg-orange-500 p-2 hover:bg-orange-400">Log out</button>
 	{/if}
 </main>
 
