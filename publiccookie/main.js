@@ -11,6 +11,33 @@ const registerPass = document.querySelector("#register-password");
 
 let myUser;
 
+async function secretFunction() {
+	try {
+		const res = await fetch("/api/secretroute");
+		if (res.ok) {
+			const data = await res.json();
+			console.log(data);
+			const success = document.createElement("h2");
+			success.innerText = data.result;
+			document.body.append(success);
+		} else {
+			const failure = document.createElement("h2");
+			failure.innerText = "Oh no! You can't see the secret!";
+			document.body.append(failure);
+			throw new Error("Request failed with status " + res.status);
+		}
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+function createSecretButton() {
+	const button = document.createElement("button");
+	button.innerText = "Secret";
+	document.body.append(button);
+	button.addEventListener("click", secretFunction);
+}
+
 loginForm.addEventListener("submit", async (e) => {
 	e.preventDefault();
 
@@ -92,3 +119,4 @@ const getUser = async () => {
 };
 
 getUser();
+createSecretButton();

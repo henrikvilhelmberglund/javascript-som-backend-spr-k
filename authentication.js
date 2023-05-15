@@ -48,6 +48,14 @@ app.use(
 // 	}
 // });
 
+function needsAuthentication(req, res, next) {
+	if (req.session.user) {
+		next();
+	} else {
+		res.status(401).json({ error: "Unauthorized" });
+	}
+}
+
 // ? 3
 app.post("/api/login", async (req, res) => {
 	console.log(req.body);
@@ -63,6 +71,10 @@ app.post("/api/login", async (req, res) => {
 	} else {
 		res.status(401).json({ error: "Unauthorized" });
 	}
+});
+
+app.get("/api/secretroute", needsAuthentication, (req, res) => {
+	res.json({ result: "Nice! You can see this secret info! 42" });
 });
 
 app.post("/api/register", async (req, res) => {
