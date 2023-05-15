@@ -2,6 +2,32 @@ import { MongoClient, ObjectId } from "mongodb";
 
 let client;
 
+export const handle = async ({ event, resolve }) => {
+	// get cookies from browser
+	const session = event.cookies.get("session");
+
+	if (!session) {
+		// if there is no session load page as normal
+		return await resolve(event);
+	}
+
+	// find the user based on the session
+	// const user = await db.user.findUnique({
+	//   where: { userAuthToken: session },
+	//   select: { username: true, role: true },
+	// })
+
+	// if `user` exists set `events.local`
+	// if (user) {
+	event.locals.user = "admin";
+	console.log(event.locals);
+	console.log("hi i am hooks");
+	// }
+
+	// load page as normal
+	return await resolve(event);
+};
+
 async function run() {
 	try {
 		client = new MongoClient("mongodb://127.0.0.1:27017");
