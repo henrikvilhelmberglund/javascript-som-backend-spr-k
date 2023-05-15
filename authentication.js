@@ -2,6 +2,7 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import session from "express-session";
 import { MongoClient } from "mongodb";
+import bcrypt from "bcrypt";
 
 const app = express();
 const port = 3000;
@@ -58,19 +59,27 @@ function needsAuthentication(req, res, next) {
 
 // ? 3
 app.post("/api/login", async (req, res) => {
+	let matches = false;
 	console.log(req.body);
 	const user = await userCollection.findOne({
 		user: req.body.loginName,
-		pass: req.body.loginPass,
 	});
-	if (user) {
-		req.session.user = user;
-		res.json({
-			user: user.user,
-		});
-	} else {
-		res.status(401).json({ error: "Unauthorized" });
-	}
+	const pass = user.pass;
+	bcrypt.compare(req.body.loginPass, pass, function (err, result) {
+		// result == true
+		console.log(result);
+		if (result) {
+			matches = true;
+			if (matches) {
+				req.session.user = user;
+				res.json({
+					user: user.user,
+				});
+			}
+		} else {
+			res.status(401).json({ error: "Unauthorized" });
+		}
+	});
 });
 
 app.get("/api/secretroute", needsAuthentication, (req, res) => {
@@ -78,12 +87,15 @@ app.get("/api/secretroute", needsAuthentication, (req, res) => {
 });
 
 app.post("/api/register", async (req, res) => {
-	const user = await userCollection.insertOne({
-		user: req.body.registerName,
-		pass: req.body.registerPass,
-	});
-	res.json({
-		user: user.user,
+	bcrypt.hash(req.body.registerPass, 10, async function (err, hash) {
+		// Store hash in your password DB.
+		const user = await userCollection.insertOne({
+			user: req.body.registerName,
+			pass: hash,
+		});
+		res.json({
+			user: user.user,
+		});
 	});
 });
 
