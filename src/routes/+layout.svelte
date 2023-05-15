@@ -11,6 +11,7 @@
 		{ link: "/07lektion7", display: "Lektion 7" },
 		{ link: "/blog", display: "Blog" },
 		{ link: "/blog-api", display: "Blog API version" },
+		{ link: "/auth", display: "Auth" },
 	];
 </script>
 
