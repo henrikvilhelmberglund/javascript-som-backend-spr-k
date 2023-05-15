@@ -20,8 +20,7 @@ export const handle = async ({ event, resolve }) => {
 	// if `user` exists set `events.local`
 	// if (user) {
 	event.locals.user = "admin";
-	console.log(event.locals);
-	console.log("hi i am hooks");
+	console.log("hooks", event.locals);
 	// }
 
 	// load page as normal
