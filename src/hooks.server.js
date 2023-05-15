@@ -1,10 +1,13 @@
 import { MongoClient, ObjectId } from "mongodb";
 
 let client;
+let user;
 
 export const handle = async ({ event, resolve }) => {
 	// get cookies from browser
 	const session = event.cookies.get("session");
+
+	const usersCollection = await getUsersCollection();
 
 	if (!session) {
 		// if there is no session load page as normal
@@ -19,8 +22,11 @@ export const handle = async ({ event, resolve }) => {
 
 	// if `user` exists set `events.local`
 	// if (user) {
-	event.locals.user = "admin";
-	console.log("hooks", event.locals);
+
+	if (user) {
+		event.locals.user = user;
+	}
+	// console.log("hooks", event.locals);
 	// }
 
 	// load page as normal
@@ -49,4 +55,18 @@ export async function getPostsCollection() {
 	const client = await run();
 	const db = client.db("blog");
 	return db.collection("posts");
+}
+
+export async function getUsersCollection() {
+	const client = await run();
+	const db = client.db("loginproject");
+	return db.collection("users");
+}
+
+export function updateHookedUser(inputUser) {
+	user = inputUser;
+}
+
+export function removeHookedUser() {
+	user = undefined;
 }
