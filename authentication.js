@@ -59,7 +59,6 @@ function needsAuthentication(req, res, next) {
 
 // ? 3
 app.post("/api/login", async (req, res) => {
-	let matches = false;
 	console.log(req.body);
 	const user = await userCollection.findOne({
 		user: req.body.loginName,
@@ -69,13 +68,10 @@ app.post("/api/login", async (req, res) => {
 		// result == true
 		console.log(result);
 		if (result) {
-			matches = true;
-			if (matches) {
-				req.session.user = user;
-				res.json({
-					user: user.user,
-				});
-			}
+			req.session.user = user;
+			res.json({
+				user: user.user,
+			});
 		} else {
 			res.status(401).json({ error: "Unauthorized" });
 		}
