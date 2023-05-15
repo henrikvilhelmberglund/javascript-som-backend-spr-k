@@ -8,7 +8,27 @@
 	let error = {};
 
 	export let data;
+
+	async function getUser() {
+		let state;
+		let data;
+		const res = await fetch("http://localhost:5173/api/auth/loggedin");
+		console.log("+page.js", res);
+		if (res.ok) {
+			data = await res.json();
+			console.log("+page.js", data);
+			state = "logged in";
+		} else {
+			console.log("+page.js", data);
+			state = "logged out";
+		}
+		return {
+			user: data,
+			state: state,
+		};
+	}
 </script>
+
 {data.state}
 <main class="[&>*]:m-4">
 	<h1 class="text-5xl">Auth page</h1>
@@ -55,7 +75,7 @@
 		</div>
 	{:else if data.state === "logged in"}
 		<div>
-			<h2 class="text-4xl">Welcome {data.user?.user}!</h2>
+			<h2 class="text-4xl">Welcome {data.user.user ?? getUser().user}!</h2>
 		</div>
 		<button
 			on:click={async () => {
