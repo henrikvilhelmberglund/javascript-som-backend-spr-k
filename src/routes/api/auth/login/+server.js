@@ -1,6 +1,8 @@
 import { v4 as uuidv4 } from "uuid";
 import { error, json } from "@sveltejs/kit";
+
 import chalk from "chalk";
+import { getUsersCollection, updateHookedUser } from "../../../../hooks.server";
 /** @type {import('./$types').RequestHandler} */
 
 // export async function GET({ url, request }) {
@@ -11,11 +13,14 @@ import chalk from "chalk";
 
 export async function POST({ url, request, cookies, locals }) {
 	const incomingBody = await request.json();
+	const usersCollection = await getUsersCollection();
 	// const body = result.body;
 	let { user, pass } = incomingBody;
 	// let { title, content, date, tags } = Object.fromEntries(formData);
 
-	if (user === "admin" && pass === "12345") {
+	const incomingUser = await usersCollection.findOne({ user, pass });
+	console.log(incomingUser);
+	if (incomingUser) {
 		cookies.set("session", uuidv4(), {
 			httpOnly: true,
 			sameSite: "strict",
@@ -26,9 +31,10 @@ export async function POST({ url, request, cookies, locals }) {
 		locals = {
 			user: user,
 		};
-		console.log(locals);
+		console.log("+server.js /login", locals);
+		updateHookedUser(user);
 		return json({
-			user: "admin",
+			user: user.user,
 		});
 	} else {
 		throw error(401, "Not authorized");
