@@ -28,12 +28,24 @@ Cookies har expiration date, utan expiration date håller den en session
 
 Man kan ge cookies ett utgångsdatum genom att sätta en UTC-formatterad datumsträng `expires=etc`
 
+Kan bara finnas ett exemplar av samma property i cookies
+
 Cookies med vanilla JS - lite jobbigt, men finns bibliotek som hanterar detta bättre
 
-Sessions - innehåller bara ett unikt ID, resten sparas som små filer på servern
+Sessioncookies - innehåller bara ett unikt ID, resten sparas som små filer på servern
 
-Sessions är bra för att spara info på servern
+Sessioncookies är bra för att spara info på servern
 
-Kan bara finnas ett exemplar av samma property i cookies
+Express-session - hanterar session cookies i Express
+
+`app.use(session({}))`
+
+Med express-session får varje req-objekt en session-property, på vilken man kan lägga nya egenskaper
+
+t.ex kolla adminusername och lösenord, om det stämmer kan man sätta user = admin
+
+Dessa egenskaper går sedan att titta på vid senare requests (kolla sessioncookie och göra saker)
+
+Detta ligger på servern och inte på klienten
 
 ## Autentisering
