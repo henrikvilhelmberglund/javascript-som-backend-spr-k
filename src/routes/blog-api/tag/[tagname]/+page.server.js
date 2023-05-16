@@ -1,6 +1,6 @@
 /** @type {import('./$types').PageLoad} */
 import { error } from "@sveltejs/kit";
-import { getPostsCollection } from "$lib/hooks.server";
+import { getPostsCollection } from "/src/hooks.server";
 
 export async function load({ params }) {
 	const postsCollection = await getPostsCollection();
